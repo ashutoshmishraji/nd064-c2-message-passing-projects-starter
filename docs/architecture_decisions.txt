@@ -1,0 +1,11 @@
+Frontend microservice will call microservices such as Person and Connection endpoint in order to get and save  the data on the UI.
+
+Location event send  from any user devices and this incoming data can be of large number . Hence, to avoid webapp threads hanging, it is passed through kafka via the link grpc.
+This is managed  and passed by the microservice location-event-producer
+
+-> When  the location received, it will process and save into postgresql database.
+-> On the consumer end of kafka, it will serviced by location-event-consumer.
+
+
+As for the person microservice, this endpoint allow person operation, that is to create and retrieve user resource. Connection microservice will retrieve connections of a person.
+

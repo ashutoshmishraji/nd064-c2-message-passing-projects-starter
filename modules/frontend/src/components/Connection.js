@@ -20,9 +20,8 @@ class Connection extends Component {
 
   getConnections = (personId) => {
     if (personId) {
-      // TODO: endpoint should be abstracted into a config variable
       fetch(
-        `http://localhost:30001/api/persons/${personId}/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5`
+        `http://localhost:30002/api/persons/${personId}/connection?start_date=2020-01-01&end_date=2021-12-30&distance=5`
       )
         .then((response) => response.json())
         .then((connections) =>
@@ -40,7 +39,7 @@ class Connection extends Component {
         <div className="connectionHeader">Connections</div>
         <ul className="connectionList">
           {this.state.connections.filter((value, index, a) => a.findIndex(v => (
-              v.person.id === value.person.id
+              v.first_name === value.first_name && v.last_name === value.last_name
           )) === index).map((connection, index) => (
             <li className="connectionListItem" key={index}>
               <div className="contact">
